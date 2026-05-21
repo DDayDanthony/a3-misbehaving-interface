@@ -1,0 +1,63 @@
+/* ============================================================
+   style.css — Definitely Normal Form
+   A3 Misbehaving Interface — external stylesheet
+   All behavior logic lives in script.js; this file is visuals only.
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f0e8;
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Page wrapper card.
+   transform-origin center so Behavior 5 rotation feels natural.
+   JS will set pageWrapper.style.transform on slider input. */
+.page-wrapper {
+  background: #ffffff;
+  border: 1px solid #d0d0c8;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 480px;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #1a1a1a;
+}
+
+#pageSubtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.8rem;
+}
+
+/* Wrapper for each label + input + message trio */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 1.4rem;
+}
+
+.field-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
