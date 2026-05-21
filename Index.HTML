@@ -9,38 +9,16 @@
 </head>
 <body>
 
-  <!-- CONTENT GOES HERE -->
-    <!-- Main page wrapper. JS rotates this element for Behavior 5 (lying slider). -->
-  <div 
-  class="page-wrapper" id="pageWrapper">
+  <!-- Main page wrapper. JS rotates this element for Behavior 5. -->
+  <div class="page-wrapper" id="pageWrapper">
 
     <!-- Heading text is randomized by JS on every reload (Behavior 5a) -->
     <h1 id="pageTitle">Definitely Normal Form</h1>
     <p id="pageSubtitle">Please fill this out completely and honestly.</p>
 
-    <!-- =====================================================
-         UI ELEMENT TYPE 2: email input
-         BEHAVIOR 2: gaslighting feedback messages
-         JS hooks: emailInput event listeners
-         ===================================================== -->
-    <div class="field-group">
-      <label for="emailInput">Email Address</label>
-      <input
-        type="email"
-        id="emailInput"
-        placeholder="your@email.com"
-        autocomplete="off"
-      />
-      <span class="field-msg" id="emailMsg"></span>
-    </div>
-    
-  </div>
-  <!-- end .page-wrapper -->
+  </div><!-- end .page-wrapper -->
+
   <!-- External script linked at bottom (Technical Requirement) -->
-  <script 
-  src="script.js">
-
-
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
