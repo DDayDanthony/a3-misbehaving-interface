@@ -28,6 +28,8 @@ const pageTitles = [
   "Please Fill This Out",
   "You Are Almost Done",
   "One Last Step (we promise)",
+  "Final Step! (not really)",
+  "We Just Need One More Thing",
 ];
 const pageSubtitles = [
   "Please fill this out completely and honestly.",
