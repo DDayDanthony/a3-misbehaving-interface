@@ -31,6 +31,21 @@
       <!-- Feedback span: JS writes gaslighting messages here -->
       <span class="field-msg" id="nameMsg"></span>
     </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 2: email input
+         BEHAVIOR 2: gaslighting feedback messages
+         JS hooks: emailInput event listeners
+         ===================================================== -->
+    <div class="field-group">
+      <label for="emailInput">Email Address</label>
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="your@email.com"
+        autocomplete="off"
+      />
+      <span class="field-msg" id="emailMsg"></span>
+    </div>
   </div><!-- end .page-wrapper -->
 
   <!-- External script linked at bottom (Technical Requirement) -->
