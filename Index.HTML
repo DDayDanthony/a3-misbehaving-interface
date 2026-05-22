@@ -46,6 +46,28 @@
       />
       <span class="field-msg" id="emailMsg"></span>
     </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 3: range slider
+         BEHAVIOR 5B: lying slider
+         Label says "Font Size" — JS actually rotates the page
+         JS hooks: fontSlider input listener
+         ===================================================== -->
+    <div class="field-group">
+      <label for="fontSlider">
+        Font Size
+        <span class="slider-hint">(drag to adjust readability)</span>
+      </label>
+      <input
+        type="range"
+        id="fontSlider"
+        min="0"
+        max="360"
+        value="0"
+        step="1"
+      />
+      <!-- Displays a fake px value — JS updates this -->
+      <span class="field-msg" id="sliderMsg">Size: 16px</span>
+    </div>
   </div><!-- end .page-wrapper -->
 
   <!-- External script linked at bottom (Technical Requirement) -->
