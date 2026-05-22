@@ -169,3 +169,23 @@ fontSlider.addEventListener('input', function () {
   // Actually rotate the entire page (the truth)
   pageWrapper.style.transform = 'rotate(' + (sliderValue * 0.5) + 'deg)';
 });
+
+// ---- DOM references for mood select ----
+const moodSelect = document.getElementById('moodSelect');
+const moodMsg    = document.getElementById('moodMsg');
+
+// Extends BEHAVIOR 2: mood select confirms choice, then immediately recants.
+// The user sees their selection acknowledged and then called wrong —
+// even though nothing about their choice has changed.
+moodSelect.addEventListener('change', function () {
+  const selectedText = moodSelect.options[moodSelect.selectedIndex].text;
+  if (moodSelect.value !== '') {
+    moodMsg.textContent = selectedText + "? That's not an option.";
+    moodMsg.style.color = '#b33';
+    setTimeout(() => {
+      moodMsg.textContent = 'Actually, that works fine.';
+      moodMsg.style.color = '#2a7';
+    }, 1200);
+    setTimeout(() => { moodMsg.textContent = ''; }, 2800);
+  }
+});
