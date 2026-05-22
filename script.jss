@@ -218,6 +218,9 @@ const extraTerms = [
   'I consent to my preferences being ignored',
   'I agree to check this box again tomorrow',
   'I accept partial responsibility for server downtime',
+  'I agree my data will be stored on a potato',
+  'I consent to being referred to as "valued user"',
+  'I accept that this form may never actually submit',
 ];
 
 function spawnCheckboxes() {
