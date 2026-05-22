@@ -90,3 +90,16 @@ h1 {
   min-height: 1em;
 }
 
+/* Range slider — looks exactly like a font-size control. It is not.
+   Behavior 5: dragging this actually rotates the page via JS. */
+input[type="range"] {
+  width: 100%;
+  accent-color: #555;
+  cursor: pointer;
+}
+
+.slider-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #999;
+}
