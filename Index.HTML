@@ -15,7 +15,22 @@
     <!-- Heading text is randomized by JS on every reload (Behavior 5a) -->
     <h1 id="pageTitle">Definitely Normal Form</h1>
     <p id="pageSubtitle">Please fill this out completely and honestly.</p>
-
+<!-- =====================================================
+         UI ELEMENT TYPE 1: text input
+         BEHAVIOR 3: self-erasing / fighting input
+         JS hooks: nameInput event listeners
+         ===================================================== -->
+    <div class="field-group">
+      <label for="nameInput">Your Name</label>
+      <input
+        type="text"
+        id="nameInput"
+        placeholder="Type your name..."
+        autocomplete="off"
+      />
+      <!-- Feedback span: JS writes gaslighting messages here -->
+      <span class="field-msg" id="nameMsg"></span>
+    </div>
   </div><!-- end .page-wrapper -->
 
   <!-- External script linked at bottom (Technical Requirement) -->
