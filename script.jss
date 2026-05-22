@@ -189,3 +189,62 @@ moodSelect.addEventListener('change', function () {
     setTimeout(() => { moodMsg.textContent = ''; }, 2800);
   }
 });
+
+// ---- DOM references for checkbox area ----
+const checkboxArea = document.getElementById('checkboxArea');
+
+// ============================================================
+// BEHAVIOR 4: Multiplying checkboxes
+//
+// Design intent: Every checkbox that gets checked spawns two more
+// with increasingly absurd terms. The goal of "agreeing to
+// everything" keeps receding. Parodies dark-pattern consent UI
+// by making completion literally impossible.
+//
+// DOM manipulation (Requirement): new elements appended to DOM.
+// ============================================================
+let checkboxCounter = 3;
+let termsUsedIndex  = 0;
+
+const extraTerms = [
+  'I consent to receiving 47 emails per day',
+  "I agree my firstborn's name will be \"User12847\"",
+  'I accept that clicking Submit may summon something',
+  'I consent to occasional unrequested rebranding',
+  'I agree this form is working correctly',
+  'I acknowledge that I am definitely a human',
+  'I accept cookies, brownies, and other baked goods',
+  'I agree to read the 847-page privacy policy',
+  'I consent to my preferences being ignored',
+  'I agree to check this box again tomorrow',
+  'I accept partial responsibility for server downtime',
+];
+
+function spawnCheckboxes() {
+  for (let i = 0; i < 2; i++) {
+    if (termsUsedIndex >= extraTerms.length) return;
+
+    const newLabel = document.createElement('label');
+    newLabel.classList.add('checkbox-label', 'spawned');
+
+    const newCheck = document.createElement('input');
+    newCheck.type = 'checkbox';
+    newCheck.classList.add('terms-check');
+    newCheck.id = 'check' + checkboxCounter;
+
+    // Each new checkbox also triggers more spawning (recursive)
+    newCheck.addEventListener('change', spawnCheckboxes);
+
+    newLabel.appendChild(newCheck);
+    newLabel.appendChild(document.createTextNode(' ' + extraTerms[termsUsedIndex]));
+    checkboxArea.appendChild(newLabel);
+
+    checkboxCounter++;
+    termsUsedIndex++;
+  }
+}
+
+// Attach spawn behavior to the two initial checkboxes
+document.querySelectorAll('.terms-check').forEach(function (checkbox) {
+  checkbox.addEventListener('change', spawnCheckboxes);
+});
