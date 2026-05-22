@@ -61,3 +61,32 @@ h1 {
   font-weight: 500;
   color: #333;
 }
+
+/* Text and email inputs, select menus — shared styles */
+.field-group input[type="text"],
+.field-group input[type="email"],
+.field-group select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+.field-group input[type="text"]:focus,
+.field-group input[type="email"]:focus,
+.field-group select:focus {
+  border-color: #888;
+  background: #fff;
+}
+
+/* Field messages: JS sets .textContent and .style.color dynamically.
+   Always present in DOM — only text content changes (Behavior 2). */
+.field-msg {
+  font-size: 0.78rem;
+  min-height: 1em;
+}
+
