@@ -84,6 +84,23 @@
       </select>
       <span class="field-msg" id="moodMsg"></span>
     </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 5: checkboxes
+         BEHAVIOR 4: multiplying checkboxes
+         JS appends more label+checkbox elements to #checkboxArea
+         on each check event (DOM manipulation, Requirement)
+         ===================================================== -->
+    <div class="field-group" id="checkboxArea">
+      <label class="section-label">Agree to terms:</label>
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" id="check1" />
+        I agree to the Terms of Service
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" id="check2" />
+        I consent to data collection
+      </label>
+    </div>
   </div><!-- end .page-wrapper -->
 
   <!-- External script linked at bottom (Technical Requirement) -->
