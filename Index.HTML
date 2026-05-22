@@ -68,6 +68,22 @@
       <!-- Displays a fake px value — JS updates this -->
       <span class="field-msg" id="sliderMsg">Size: 16px</span>
     </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 4: select menu
+         Extends BEHAVIOR 2: gaslighting — confirms choice then recants
+         JS hooks: moodSelect change listener
+         ===================================================== -->
+    <div class="field-group">
+      <label for="moodSelect">How are you feeling?</label>
+      <select id="moodSelect">
+        <option value="">-- Select your mood --</option>
+        <option value="happy">Happy</option>
+        <option value="confused">Confused</option>
+        <option value="frustrated">Frustrated</option>
+        <option value="fine">Fine</option>
+      </select>
+      <span class="field-msg" id="moodMsg"></span>
+    </div>
   </div><!-- end .page-wrapper -->
 
   <!-- External script linked at bottom (Technical Requirement) -->
