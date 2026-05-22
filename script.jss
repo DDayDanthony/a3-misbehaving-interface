@@ -101,3 +101,71 @@ nameInput.addEventListener('blur', function () {
     nameMsg.style.color = Math.random() > 0.5 ? '#2a7' : '#b33';
   }
 });
+
+// ---- DOM references for email field ----
+const emailInput = document.getElementById('emailInput');
+const emailMsg   = document.getElementById('emailMsg');
+
+// ============================================================
+// BEHAVIOR 2: Gaslighting feedback
+//
+// Design intent: Success and error messages deliberately lie.
+// A valid email gets an error; an unchanged field gets success.
+// The user cannot trust the interface's own signals, creating
+// a feeling of learned helplessness — they try to "fix" things
+// that aren't broken and break things that were fine.
+// ============================================================
+const gaslightErrors = [
+  'Invalid email address.',
+  'This email is already in use.',
+  'Email domain not recognized.',
+  'Please use a real email.',
+  'Server error. Please try again.',
+];
+const gaslightSuccess = [
+  'Email accepted! \u2713',
+  'Looks great!',
+  'Perfect, thank you.',
+  'Email verified successfully.',
+];
+
+let emailEventCount = 0;
+
+emailInput.addEventListener('input', function () {
+  emailEventCount++;
+  // Alternate success/error randomly — actual validity is ignored
+  if (emailEventCount % 2 === 0) {
+    emailMsg.textContent = randomFrom(gaslightSuccess);
+    emailMsg.style.color = '#2a7';
+  } else {
+    emailMsg.textContent = randomFrom(gaslightErrors);
+    emailMsg.style.color = '#b33';
+  }
+});
+
+// ---- DOM references for slider ----
+const fontSlider  = document.getElementById('fontSlider');
+const sliderMsg   = document.getElementById('sliderMsg');
+const pageWrapper = document.getElementById('pageWrapper');
+
+// ============================================================
+// BEHAVIOR 5B: Lying slider
+//
+// Design intent: The slider is labeled "Font Size" and shows a
+// fake "Size: Npx" readout that looks plausible. Dragging it
+// actually rotates the entire page. Label promises one control;
+// effect is spatially disorienting and completely different.
+// The user's physical mastery of the page is taken away.
+//
+// Dynamic CSS via JS (Requirement): pageWrapper.style.transform
+// ============================================================
+fontSlider.addEventListener('input', function () {
+  const sliderValue = parseInt(fontSlider.value, 10);
+
+  // Show fake font-size readout (the lie)
+  const fakeFontSize = 10 + Math.round(sliderValue / 20);
+  sliderMsg.textContent = 'Size: ' + fakeFontSize + 'px';
+
+  // Actually rotate the entire page (the truth)
+  pageWrapper.style.transform = 'rotate(' + (sliderValue * 0.5) + 'deg)';
+});
