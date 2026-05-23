@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-javascript// ============================================================
-=======
 // ============================================================
->>>>>>> ac364a1f20ff84f88585107d2cef0ae479584f0f
 // script.js — Definitely Normal Form
 // A3 Misbehaving Interface
 // All multi-word identifiers use camelCase (Technical Requirement).
@@ -16,7 +12,6 @@ function randomFrom(arr) {
 // ---- Utility: clamp a value between min and max ----
 function clamp(val, minVal, maxVal) {
   return Math.max(minVal, Math.min(maxVal, val));
-<<<<<<< HEAD
 }
 
 // ============================================================
@@ -46,6 +41,7 @@ const pageSubtitles = [
 
 document.getElementById('pageTitle').textContent    = randomFrom(pageTitles);
 document.getElementById('pageSubtitle').textContent = randomFrom(pageSubtitles);
+
 // ---- DOM references for name field ----
 const nameInput = document.getElementById('nameInput');
 const nameMsg   = document.getElementById('nameMsg');
@@ -140,7 +136,6 @@ let emailEventCount = 0;
 
 emailInput.addEventListener('input', function () {
   emailEventCount++;
-  // Alternate success/error randomly — actual validity is ignored
   if (emailEventCount % 2 === 0) {
     emailMsg.textContent = randomFrom(gaslightSuccess);
     emailMsg.style.color = '#2a7';
@@ -182,8 +177,6 @@ const moodSelect = document.getElementById('moodSelect');
 const moodMsg    = document.getElementById('moodMsg');
 
 // Extends BEHAVIOR 2: mood select confirms choice, then immediately recants.
-// The user sees their selection acknowledged and then called wrong —
-// even though nothing about their choice has changed.
 moodSelect.addEventListener('change', function () {
   const selectedText = moodSelect.options[moodSelect.selectedIndex].text;
   if (moodSelect.value !== '') {
@@ -242,7 +235,6 @@ function spawnCheckboxes() {
     newCheck.classList.add('terms-check');
     newCheck.id = 'check' + checkboxCounter;
 
-    // Each new checkbox also triggers more spawning (recursive)
     newCheck.addEventListener('change', spawnCheckboxes);
 
     newLabel.appendChild(newCheck);
@@ -254,10 +246,10 @@ function spawnCheckboxes() {
   }
 }
 
-// Attach spawn behavior to the two initial checkboxes
 document.querySelectorAll('.terms-check').forEach(function (checkbox) {
   checkbox.addEventListener('change', spawnCheckboxes);
 });
+
 // ---- DOM references for submit button and feedback ----
 const globalFeedback = document.getElementById('globalFeedback');
 
@@ -289,7 +281,7 @@ document.addEventListener('mousemove', function (e) {
   const distance = Math.sqrt(dx * dx + dy * dy);
 
   if (distance < 160) {
-    const fleeSpeed = clamp(1400 / (distance + 1), 4, 70);
+    const fleeSpeed = clamp(1400 / (distance + 1), 6, 70);
     const norm      = distance > 0 ? distance : 1;
 
     btnLeft += (dx / norm) * fleeSpeed;
@@ -307,12 +299,11 @@ document.addEventListener('mousemove', function (e) {
   }
 });
 
-// If user catches the button: fake success, then panic, then re-spawn
 document.addEventListener('click', function (e) {
   const btnEl = document.getElementById('submitBtn');
   if (btnEl && e.target === btnEl) {
 
-    btnEl.remove(); // DOM element removed (Requirement)
+    btnEl.remove();
 
     globalFeedback.textContent = 'Form submitted successfully!';
     globalFeedback.style.color = '#2a7';
@@ -321,13 +312,12 @@ document.addEventListener('click', function (e) {
       globalFeedback.textContent = 'Wait — something went wrong. Please resubmit.';
       globalFeedback.style.color = '#b33';
 
-      // Re-add button to DOM at a random position (DOM element added, Requirement)
       const newBtn       = document.createElement('button');
       newBtn.id          = 'submitBtn';
       newBtn.type        = 'button';
       newBtn.textContent = 'Submit Form';
 
-      btnLeft = Math.round(Math.random() * (window.innerWidth  - 160));
+      btnLeft = Math.round(Math.random() * (window.innerWidth  - 200));
       btnTop  = Math.round(Math.random() * (window.innerHeight - 60));
 
       newBtn.style.cssText = [
@@ -369,7 +359,7 @@ let fakeProgress      = 0;
 let progressDirection = 1;
 
 function updateFakeProgress() {
-  if (Math.random() < 0.08) { progressDirection *= -1; }
+  if (Math.random() < 0.1) { progressDirection *= -1; }
   if (Math.random() < 0.04) { fakeProgress = Math.floor(Math.random() * 20); }
 
   fakeProgress += (Math.random() * 3) * progressDirection;
@@ -396,6 +386,3 @@ setInterval(updateFakeProgress, 600);
 //   pageWrapper.style.opacity = pageOpacity;
 // }, 1000);
 // ============================================================
-=======
-}
->>>>>>> ac364a1f20ff84f88585107d2cef0ae479584f0f
