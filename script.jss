@@ -375,3 +375,17 @@ function updateFakeProgress() {
 }
 
 setInterval(updateFakeProgress, 800);
+
+// ============================================================
+// Discarded experiment: gradually faded page opacity over 30s
+// to pressure the user to hurry up. Removed — felt too hostile
+// too fast and broke the slow-burn confusion effect.
+// Left here as evidence of iteration (Paper Trail requirement).
+//
+// let pageOpacity = 1.0;
+// const fadeTimer = setInterval(function () {
+//   pageOpacity -= 0.01;
+//   if (pageOpacity < 0.3) clearInterval(fadeTimer);
+//   pageWrapper.style.opacity = pageOpacity;
+// }, 1000);
+// ============================================================
