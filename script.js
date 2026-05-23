@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 javascript// ============================================================
+=======
+// ============================================================
+>>>>>>> ac364a1f20ff84f88585107d2cef0ae479584f0f
 // script.js — Definitely Normal Form
 // A3 Misbehaving Interface
 // All multi-word identifiers use camelCase (Technical Requirement).
@@ -12,6 +16,7 @@ function randomFrom(arr) {
 // ---- Utility: clamp a value between min and max ----
 function clamp(val, minVal, maxVal) {
   return Math.max(minVal, Math.min(maxVal, val));
+<<<<<<< HEAD
 }
 
 // ============================================================
@@ -391,3 +396,6 @@ setInterval(updateFakeProgress, 600);
 //   pageWrapper.style.opacity = pageOpacity;
 // }, 1000);
 // ============================================================
+=======
+}
+>>>>>>> ac364a1f20ff84f88585107d2cef0ae479584f0f
