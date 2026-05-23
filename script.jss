@@ -374,7 +374,7 @@ function updateFakeProgress() {
     Math.round(fakeProgress) === 99 ? '100%' : Math.round(fakeProgress) + '%';
 }
 
-setInterval(updateFakeProgress, 800);
+setInterval(updateFakeProgress, 600);
 
 // ============================================================
 // Discarded experiment: gradually faded page opacity over 30s
