@@ -1,0 +1,203 @@
+/* ============================================================
+   style.css — Definitely Normal Form
+   A3 Misbehaving Interface — external stylesheet
+   All behavior logic lives in script.js; this file is visuals only.
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f0e8;
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Page wrapper card.
+   transform-origin center so Behavior 5 rotation feels natural.
+   JS will set pageWrapper.style.transform on slider input. */
+.page-wrapper {
+  background: #ffffff;
+  border: 1px solid #d0d0c8;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 480px;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #1a1a1a;
+}
+
+#pageSubtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.8rem;
+}
+
+/* Wrapper for each label + input + message trio */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 1.4rem;
+}
+
+.field-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Text and email inputs, select menus — shared styles */
+.field-group input[type="text"],
+.field-group input[type="email"],
+.field-group select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+.field-group input[type="text"]:focus,
+.field-group input[type="email"]:focus,
+.field-group select:focus {
+  border-color: #888;
+  background: #fff;
+}
+
+/* Field messages: JS sets .textContent and .style.color dynamically.
+   Always present in DOM — only text content changes (Behavior 2). */
+.field-msg {
+  font-size: 0.78rem;
+  min-height: 1em;
+}
+
+/* Range slider — looks exactly like a font-size control. It is not.
+   Behavior 5: dragging this actually rotates the page via JS. */
+input[type="range"] {
+  width: 100%;
+  accent-color: #555;
+  cursor: pointer;
+}
+
+.slider-hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #999;
+}
+
+.section-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+/* Each checkbox + text pair */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #444;
+  cursor: pointer;
+}
+
+/* Newly spawned checkboxes get this class for a slide-in animation
+
+/* Submit zone: position:relative so button can be offset by JS.
+   overflow:visible lets the button escape the zone when fleeing. */
+.submit-zone {
+  position: relative;
+  height: 60px;
+  margin-bottom: 1rem;
+  overflow: visible;
+}
+
+/* The fleeing submit button.
+   JS dynamically sets left, top, transform (Dynamic CSS, Requirement).
+   JS also switches position to fixed so it can flee across whole screen. */
+#submitBtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px 28px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: left 0.15s ease, top 0.15s ease, transform 0.1s;
+  white-space: nowrap;
+}
+
+#submitBtn:hover { background: #333; }
+
+/* JS adds this class when cursor is within 60px — button visually shrinks.
+   Gives user false hope that they are about to catch it. */
+#submitBtn.shrinking { transform: scale(0.7); }
+
+/* Global gaslighting feedback message — JS sets text and color dynamically */
+.global-msg {
+  min-height: 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* --- Discarded experiment: tried a pulsing red border on inputs ---
+   Removed — felt too hostile too early, killed the slow-burn confusion.
+   Left here as evidence of iteration (Paper Trail requirement).
+
+.field-group input.danger-pulse {
+  animation: redPulse 0.6s infinite alternate;
+}
+@keyframes redPulse {
+  from { border-color: #ccc; }
+  to   { border-color: #d44; box-shadow: 0 0 0 2px rgba(200,60,60,0.2); }
+}
+*/
+.progress-wrap { margin-top: 0.5rem; }
+
+.progress-wrap label {
+  font-size: 0.8rem;
+  color: #888;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.progress-bg {
+  background: #e8e8e0;
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+/* JS changes width dynamically (Dynamic CSS via JS, Requirement) */
+.progress-fill {
+  height: 100%;
+  background: #555;
+  width: 0%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}

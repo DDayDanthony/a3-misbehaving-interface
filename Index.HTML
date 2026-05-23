@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Definitely Normal Form | A3</title>
+  <!-- External stylesheet linked here (Technical Requirement) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Main page wrapper. JS rotates this element for Behavior 5. -->
+  <div class="page-wrapper" id="pageWrapper">
+
+    <!-- Heading text is randomized by JS on every reload (Behavior 5a) -->
+    <h1 id="pageTitle">Definitely Normal Form</h1>
+    <p id="pageSubtitle">Please fill this out completely and honestly.</p>
+<!-- =====================================================
+         UI ELEMENT TYPE 1: text input
+         BEHAVIOR 3: self-erasing / fighting input
+         JS hooks: nameInput event listeners
+         ===================================================== -->
+    <div class="field-group">
+      <label for="nameInput">Your Name</label>
+      <input
+        type="text"
+        id="nameInput"
+        placeholder="Type your name..."
+        autocomplete="off"
+      />
+      <!-- Feedback span: JS writes gaslighting messages here -->
+      <span class="field-msg" id="nameMsg"></span>
+    </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 2: email input
+         BEHAVIOR 2: gaslighting feedback messages
+         JS hooks: emailInput event listeners
+         ===================================================== -->
+    <div class="field-group">
+      <label for="emailInput">Email Address</label>
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="your@email.com"
+        autocomplete="off"
+      />
+      <span class="field-msg" id="emailMsg"></span>
+    </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 3: range slider
+         BEHAVIOR 5B: lying slider
+         Label says "Font Size" — JS actually rotates the page
+         JS hooks: fontSlider input listener
+         ===================================================== -->
+    <div class="field-group">
+      <label for="fontSlider">
+        Font Size
+        <span class="slider-hint">(drag to adjust readability)</span>
+      </label>
+      <input
+        type="range"
+        id="fontSlider"
+        min="0"
+        max="360"
+        value="0"
+        step="1"
+      />
+      <!-- Displays a fake px value — JS updates this -->
+      <span class="field-msg" id="sliderMsg">Size: 16px</span>
+    </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 4: select menu
+         Extends BEHAVIOR 2: gaslighting — confirms choice then recants
+         JS hooks: moodSelect change listener
+         ===================================================== -->
+    <div class="field-group">
+      <label for="moodSelect">How are you feeling?</label>
+      <select id="moodSelect">
+        <option value="">-- Select your mood --</option>
+        <option value="happy">Happy</option>
+        <option value="confused">Confused</option>
+        <option value="frustrated">Frustrated</option>
+        <option value="fine">Fine</option>
+      </select>
+      <span class="field-msg" id="moodMsg"></span>
+    </div>
+    <!-- =====================================================
+         UI ELEMENT TYPE 5: checkboxes
+         BEHAVIOR 4: multiplying checkboxes
+         JS appends more label+checkbox elements to #checkboxArea
+         on each check event (DOM manipulation, Requirement)
+         ===================================================== -->
+    <div class="field-group" id="checkboxArea">
+      <label class="section-label">Agree to terms:</label>
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" id="check1" />
+        I agree to the Terms of Service
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" id="check2" />
+        I consent to data collection
+      </label>
+    </div>
+    <!-- Progress bar that never honestly reaches 100%.
+         JS changes the fill width dynamically (Dynamic CSS, Requirement). -->
+    <div class="progress-wrap">
+      <label>Form completion: <span id="progressLabel">0%</span></label>
+      <div class="progress-bg">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div><!-- end .page-wrapper -->
+
+  <!-- External script linked at bottom (Technical Requirement) -->
+  <script src="script.js"></script>
+</body>
+</html>
