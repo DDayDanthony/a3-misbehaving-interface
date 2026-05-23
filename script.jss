@@ -98,7 +98,7 @@ nameInput.addEventListener('blur', function () {
       "Name accepted! (it was not)",
     ];
     nameMsg.textContent = randomFrom(lies);
-    nameMsg.style.color = Math.random() > 0.5 ? '#2a7' : '#b33';
+    nameMsg.style.color = Math.random() > 0.3 ? '#b33' : '#2a7';
   }
 });
 
