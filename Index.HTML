@@ -101,6 +101,20 @@
         I consent to data collection
       </label>
     </div>
+    <!-- =====================================================
+         BEHAVIOR 1: fleeing submit button
+         .submit-zone is position:relative so JS can offset
+         the button freely with left/top values.
+         JS removes and re-adds this button on click (DOM manipulation)
+         ===================================================== -->
+    <div class="submit-zone" id="submitZone">
+      <button id="submitBtn" type="button">
+        Submit Form
+      </button>
+    </div>
+
+    <!-- Global feedback — JS writes gaslighting messages here (Behavior 2) -->
+    <div id="globalFeedback" class="global-msg" aria-live="polite"></div>
     <!-- Progress bar that never honestly reaches 100%.
          JS changes the fill width dynamically (Dynamic CSS, Requirement). -->
     <div class="progress-wrap">
