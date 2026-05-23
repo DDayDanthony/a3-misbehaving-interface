@@ -169,7 +169,7 @@ fontSlider.addEventListener('input', function () {
   sliderMsg.textContent = 'Size: ' + fakeFontSize + 'px';
 
   // Actually rotate the entire page (the truth)
-  pageWrapper.style.transform = 'rotate(' + (sliderValue * 0.5) + 'deg)';
+  pageWrapper.style.transform = 'rotate(' + (sliderValue * 0.4) + 'deg)';
 });
 
 // ---- DOM references for mood select ----
