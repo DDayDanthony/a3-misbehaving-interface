@@ -342,3 +342,36 @@ document.addEventListener('click', function (e) {
     }, 1500);
   }
 });
+
+// ---- DOM references for progress bar ----
+const progressFill  = document.getElementById('progressFill');
+const progressLabel = document.getElementById('progressLabel');
+
+// ============================================================
+// PROGRESS BAR: lies about form completion
+//
+// Design intent: looks like genuine helpful feedback but the
+// percentage has no connection to actual field state. It speeds
+// up, reverses, and resets arbitrarily. Claims 100% when the
+// submit button isn't even reachable. Reinforces the theme:
+// the interface's signals are meaningless and untrustworthy.
+//
+// Dynamic CSS via JS (Requirement): progressFill.style.width
+// ============================================================
+let fakeProgress      = 0;
+let progressDirection = 1;
+
+function updateFakeProgress() {
+  if (Math.random() < 0.08) { progressDirection *= -1; }
+  if (Math.random() < 0.04) { fakeProgress = Math.floor(Math.random() * 20); }
+
+  fakeProgress += (Math.random() * 3) * progressDirection;
+  fakeProgress  = clamp(fakeProgress, 0, 99);
+
+  progressFill.style.width = fakeProgress + '%';
+
+  progressLabel.textContent =
+    Math.round(fakeProgress) === 99 ? '100%' : Math.round(fakeProgress) + '%';
+}
+
+setInterval(updateFakeProgress, 800);
