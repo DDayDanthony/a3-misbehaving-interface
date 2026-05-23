@@ -121,6 +121,7 @@ const gaslightErrors = [
   'Email domain not recognized.',
   'Please use a real email.',
   'Server error. Please try again.',
+  'Your email contains illegal characters.',
 ];
 const gaslightSuccess = [
   'Email accepted! \u2713',
