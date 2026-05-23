@@ -282,7 +282,7 @@ document.addEventListener('mousemove', function (e) {
   const distance = Math.sqrt(dx * dx + dy * dy);
 
   if (distance < 160) {
-    const fleeSpeed = clamp(1200 / (distance + 1), 4, 60);
+    const fleeSpeed = clamp(1400 / (distance + 1), 4, 70);
     const norm      = distance > 0 ? distance : 1;
 
     btnLeft += (dx / norm) * fleeSpeed;
