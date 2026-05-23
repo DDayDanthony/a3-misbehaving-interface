@@ -62,7 +62,7 @@ let nameStrokeCount = 0;
 nameInput.addEventListener('input', function () {
   nameStrokeCount++;
 
-  if (nameStrokeCount % 3 === 0) {
+    if (nameStrokeCount % 4 === 0) {
     const currentValue = nameInput.value;
     const strategy = Math.floor(Math.random() * 3);
 
