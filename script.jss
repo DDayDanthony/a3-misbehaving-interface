@@ -251,3 +251,94 @@ function spawnCheckboxes() {
 document.querySelectorAll('.terms-check').forEach(function (checkbox) {
   checkbox.addEventListener('change', spawnCheckboxes);
 });
+// ---- DOM references for submit button and feedback ----
+const globalFeedback = document.getElementById('globalFeedback');
+
+// ============================================================
+// BEHAVIOR 1: Fleeing submit button
+//
+// Design intent: The submit button moves away from the cursor
+// whenever it comes within 160px. The closer the cursor,
+// the faster it retreats. This directly attacks the primary
+// goal of the page — completing the form — and turns the
+// interface itself into an adversary.
+//
+// Dynamic CSS via JS (Requirement): left, top, transform change.
+// DOM manipulation (Requirement): button removed and re-added on click.
+// ============================================================
+let btnLeft = 0;
+let btnTop  = 0;
+
+document.addEventListener('mousemove', function (e) {
+  const btnEl = document.getElementById('submitBtn');
+  if (!btnEl) return;
+
+  const btnRect    = btnEl.getBoundingClientRect();
+  const btnCenterX = btnRect.left + btnRect.width  / 2;
+  const btnCenterY = btnRect.top  + btnRect.height / 2;
+
+  const dx       = btnCenterX - e.clientX;
+  const dy       = btnCenterY - e.clientY;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < 160) {
+    const fleeSpeed = clamp(1200 / (distance + 1), 4, 60);
+    const norm      = distance > 0 ? distance : 1;
+
+    btnLeft += (dx / norm) * fleeSpeed;
+    btnTop  += (dy / norm) * fleeSpeed;
+
+    btnLeft = clamp(btnLeft, 10, window.innerWidth  - btnRect.width  - 20);
+    btnTop  = clamp(btnTop,  10, window.innerHeight - btnRect.height - 20);
+
+    btnEl.style.position = 'fixed';
+    btnEl.style.left     = btnLeft + 'px';
+    btnEl.style.top      = btnTop  + 'px';
+    btnEl.style.zIndex   = '999';
+
+    btnEl.classList.toggle('shrinking', distance < 60);
+  }
+});
+
+// If user catches the button: fake success, then panic, then re-spawn
+document.addEventListener('click', function (e) {
+  const btnEl = document.getElementById('submitBtn');
+  if (btnEl && e.target === btnEl) {
+
+    btnEl.remove(); // DOM element removed (Requirement)
+
+    globalFeedback.textContent = 'Form submitted successfully!';
+    globalFeedback.style.color = '#2a7';
+
+    setTimeout(function () {
+      globalFeedback.textContent = 'Wait — something went wrong. Please resubmit.';
+      globalFeedback.style.color = '#b33';
+
+      // Re-add button to DOM at a random position (DOM element added, Requirement)
+      const newBtn       = document.createElement('button');
+      newBtn.id          = 'submitBtn';
+      newBtn.type        = 'button';
+      newBtn.textContent = 'Submit Form';
+
+      btnLeft = Math.round(Math.random() * (window.innerWidth  - 160));
+      btnTop  = Math.round(Math.random() * (window.innerHeight - 60));
+
+      newBtn.style.cssText = [
+        'position:fixed',
+        'left:' + btnLeft + 'px',
+        'top:'  + btnTop  + 'px',
+        'z-index:999',
+        'padding:10px 28px',
+        'background:#1a1a1a',
+        'color:#fff',
+        'border:none',
+        'border-radius:6px',
+        'font-size:0.95rem',
+        'font-weight:500',
+        'cursor:pointer',
+      ].join(';');
+
+      document.body.appendChild(newBtn);
+    }, 1500);
+  }
+});
