@@ -128,6 +128,7 @@ const gaslightSuccess = [
   'Looks great!',
   'Perfect, thank you.',
   'Email verified successfully.',
+  'Great! (please try again)',
 ];
 
 let emailEventCount = 0;
