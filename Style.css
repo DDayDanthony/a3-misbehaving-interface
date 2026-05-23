@@ -122,3 +122,33 @@ input[type="range"] {
 }
 
 /* Newly spawned checkboxes get this class for a slide-in animation
+
+/* Submit zone: position:relative so button can be offset by JS.
+   overflow:visible lets the button escape the zone when fleeing. */
+.submit-zone {
+  position: relative;
+  height: 60px;
+  margin-bottom: 1rem;
+  overflow: visible;
+}
+
+/* The fleeing submit button.
+   JS dynamically sets left, top, transform (Dynamic CSS, Requirement).
+   JS also switches position to fixed so it can flee across whole screen. */
+#submitBtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px 28px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: left 0.15s ease, top 0.15s ease, transform 0.1s;
+  white-space: nowrap;
+}
+
+#submitBtn:hover { background: #333; }
