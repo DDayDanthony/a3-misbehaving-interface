@@ -101,6 +101,14 @@
         I consent to data collection
       </label>
     </div>
+    <!-- Progress bar that never honestly reaches 100%.
+         JS changes the fill width dynamically (Dynamic CSS, Requirement). -->
+    <div class="progress-wrap">
+      <label>Form completion: <span id="progressLabel">0%</span></label>
+      <div class="progress-bg">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
   </div><!-- end .page-wrapper -->
 
   <!-- External script linked at bottom (Technical Requirement) -->
