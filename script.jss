@@ -320,7 +320,7 @@ document.addEventListener('click', function (e) {
       newBtn.type        = 'button';
       newBtn.textContent = 'Submit Form';
 
-      btnLeft = Math.round(Math.random() * (window.innerWidth  - 160));
+      btnLeft = Math.round(Math.random() * (window.innerWidth  - 200));
       btnTop  = Math.round(Math.random() * (window.innerHeight - 60));
 
       newBtn.style.cssText = [
