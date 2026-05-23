@@ -152,3 +152,28 @@ input[type="range"] {
 }
 
 #submitBtn:hover { background: #333; }
+
+/* JS adds this class when cursor is within 60px — button visually shrinks.
+   Gives user false hope that they are about to catch it. */
+#submitBtn.shrinking { transform: scale(0.7); }
+
+/* Global gaslighting feedback message — JS sets text and color dynamically */
+.global-msg {
+  min-height: 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* --- Discarded experiment: tried a pulsing red border on inputs ---
+   Removed — felt too hostile too early, killed the slow-burn confusion.
+   Left here as evidence of iteration (Paper Trail requirement).
+
+.field-group input.danger-pulse {
+  animation: redPulse 0.6s infinite alternate;
+}
+@keyframes redPulse {
+  from { border-color: #ccc; }
+  to   { border-color: #d44; box-shadow: 0 0 0 2px rgba(200,60,60,0.2); }
+}
+*/
